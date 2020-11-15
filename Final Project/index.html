@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://d3js.org/d3.v5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.js"></script>
+        <script src="https://d3js.org/d3-geo-projection.v2.js"></script>
+        <script src="https://d3js.org/d3-color.v2.min.js"></script>
+        <script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v2.min.js"></script>
+        <script src="js/mapPlot.js"></script>
+        <script src="js/script.js"></script>
+    </head>
+    <style>
+        div.ex1 {
+                background-color: lightblue;
+                width: 30%;
+                height: 110px;
+                overflow: scroll;
+                }
+    </style>
+    <body>
+        <select id="mapCategorySelection">
+            <option value='agr'>Agreeableness</option>
+            <option value='ext'>Extraversion</option>
+            <option value='csn'>Conscientiousness</option>
+            <option value='est'>Emotional Stability</option>
+            <option value='int'>Intellect</option>
+        </select>
+        <div id="map-chart">
+        </div>
+    </body>
+    <div class="ex1">
+        <table id="tableChart" style="width:100%">
+            <tr>
+                <td>Country</td>
+                <td>Big5</td> 
+                <td>Number of People</td>
+            </tr>
+            <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+            </tr>
+        </table>
+    </div>
+
+</html>

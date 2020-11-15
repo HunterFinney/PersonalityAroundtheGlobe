@@ -1,0 +1,17 @@
+#map-chart {
+    height: 450px;
+}
+
+#scatter-plot {
+    height: 730px;
+}
+
+#map-chart svg {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+#map-chart svg {
+    margin: auto;
+}
