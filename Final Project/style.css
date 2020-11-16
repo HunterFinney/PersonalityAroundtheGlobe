@@ -15,3 +15,47 @@
 #map-chart svg {
     margin: auto;
 }
+
+.AxisHead{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+    font-weight: bold;
+    fill: black;
+    text-anchor: middle;
+}
+  
+path.pcLine{
+    stroke: rgb(40, 226, 65);
+    opacity: 0.3;
+    fill: none
+}
+  
+path.brushed{
+    stroke: rgb(230, 25, 25);
+    stroke-width: 2;
+    opacity: 0.4;
+    fill: none
+}
+  
+.no-display {
+    display: none !important;
+}
+  
+  
+#tableDiv {
+    overflow-y: scroll;
+    height: 750px;
+}
+  
+.sortable {
+    user-select: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 6px;
+    background:rgb(202, 231, 250);
+}
+  
+.sortable:hover {
+    background: black;
+    color: white;
+}
