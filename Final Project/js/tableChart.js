@@ -1,47 +1,83 @@
-class CountryData {
-    constructor(type, id, avgAgr, avgCsn, avgEst, avgExt, avgInt, medAgr, medCsn, medEst, medExt, medInt, name, n) {
-        this.type = type;
-        this.id = id;
-        this.avgAgr = avgAgr;
-        this.avgCsn = avgCsn;
-        this.avgEst = avgEst;
-        this.avgExt = avgExt;
-        this.avgInt = avgInt;
-        this.medAgr = medAgr;
-        this.medCsn = medCsn;
-        this.medEst = medEst;
-        this.medExt = medExt;
-        this.medInt = medInt;
-        this.name = name;
-        this.n = n;
-
+class TableChart
+{
+    init()
+    {
+        this.tabulate(big5, ['name', 'Agr']);
     }
 
-    generateCountryData(data) {
-        let big5Entry = big5Data.filter(d => d.Code === data.id)[0];
-
-        if (big5Entry === undefined) {
-            return new CountryData(
-                data.type,
-                data.id,
-            );
+    changeMapCategory(newCategory) {
+        d3.select('#tableChartData2').remove();
+        d3.select('#tableChartData').append("tbody").attr("id", "tableChartData2");
+        switch (newCategory) {
+            case 'agr':
+                this.tabulate(big5, ['name', 'Agr']);
+                return;
+            case 'csn':
+                this.tabulate(big5, ['name', 'Csn']);
+                return;
+            case 'ext':
+                this.tabulate(big5, ['name', 'Ext']);
+                return;
+            case 'est':
+                this.tabulate(big5, ['name', 'Est']);
+                return;
+            case 'int':
+                this.tabulate(big5, ['name', 'Int']);
+                return;
         }
+    }
 
-        return new CountryData(
-            data.type,
-            data.id,
-            big5Entry.avgAgr,
-            big5Entry.avgEst,
-            big5Entry.avgEst,
-            big5Entry.avgExt,
-            big5Entry.avgInt,
-            big5Entry.medAgr,
-            big5Entry.medCsn,
-            big5Entry.medEst,
-            big5Entry.medExt,
-            big5Entry.medInt,
-            big5Entry.name,
-            big5Entry.n
-        );
+    tabulate(data, columns) {
+        var table = d3.select('#tableChartData2').append('table')
+        var thead = table.append('thead')
+        var	tbody = table.append('tbody');
+    
+        // append the header row
+        thead.append('tr')
+          .selectAll('th')
+          .data(columns).enter()
+          .append('th')
+            .text(function (column) { return column; });
+    
+        // create a row for each object in the data
+        var rows = tbody.selectAll('tr')
+          .data(data)
+          .enter()
+          .append('tr');
+    
+        // create a cell in each row for each column
+        var cells = rows.selectAll('td')
+          .data(function (row) {
+            return columns.map(function (column) {
+              return {column: column, value: row[column]};
+            });
+          })
+          .enter()
+          .append('td')
+            .text(function (d) { return d.value; });
+    
+      return table;
     }
 }
+
+
+d3.csv("data/CountryBig5.csv").then(data => {
+    
+    function Country(name,n,agr,csn,est,ext,int){
+        this.name = name;
+        this.N = n;
+        this.Agr = agr;
+        this.Csn = csn;
+        this.Est = est;
+        this.Ext = ext;
+        this.Int = int;
+    };
+    
+    big5 = [];
+    for(let element of data) {
+        big5.push(new Country(element.Name,element.n,element.avgAgr,element.avgCsn,element.avgEst,element.avgExt,element.avgInt));
+    }
+    let tableChart = new TableChart();
+    tableChart.init();
+    
+})

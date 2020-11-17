@@ -1,3 +1,4 @@
+
 /**
  * Object to hold the necessary GeoJson data combined with the big5 data on each country
  */
@@ -119,6 +120,7 @@ class MapPlot {
      * 
      * @param {string} newCategory three letter category code
      */
+
     changeMapCategory(newCategory) {
         let countrySelection = d3.select('#map-chart').select('svg').selectAll('path');
 

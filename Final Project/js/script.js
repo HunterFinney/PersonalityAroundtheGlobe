@@ -1,3 +1,4 @@
+
 var converter;
 var big5Data;
 loadFile('data/countryCodeConversions.csv').then(data => {
@@ -6,16 +7,17 @@ loadFile('data/countryCodeConversions.csv').then(data => {
 loadFile('data/CountryBig5.csv').then(data => {
     big5Data = data;
     let mapPlot = new MapPlot(big5Data);
+    let tableChart = new TableChart();
     d3.json('data/world.json').then(mapData => {
         cleanCountryCodes(mapData);
         mapPlot.drawMap(mapData);
 
         d3.select('#mapCategorySelection').on('change', (e) => {
             mapPlot.changeMapCategory(d3.event.target.value);
+            tableChart.changeMapCategory(d3.event.target.value);
         })
     });
 });
-
 
 /**
  * Countries in the world json data use 3 digit codes while countries in the big 5
