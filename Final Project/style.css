@@ -1,5 +1,52 @@
 #map-chart {
     height: 450px;
+    width: 700px;
+}
+
+.map-wrapper {
+    display: flex;
+}
+
+#mapCategorySelection {
+    max-height: 2em;
+}
+
+.compare-body {
+    display: flex;
+    columns: 2;
+}
+
+.compare-body * {
+    display: block;
+}
+
+#country-compare {
+    border-radius: 20px;
+    border: 2px solid black;
+    top: 100px;
+    left: 500px;
+    position: absolute;
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    margin: auto;
+}
+
+.compare-hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.compare-close {
+    position: absolute;
+    left: 90%;
+    top: 15px;
+}
+
+.compare-table-headers {
+    font-size: 1.1em;
+    font-weight: bold;
+
 }
 
 #scatter-plot {
