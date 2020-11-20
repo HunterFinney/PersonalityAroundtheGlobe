@@ -30,7 +30,7 @@ class MapPlot {
      * 
      * @param {*} big5Data 
      */
-    constructor(big5Data) {
+    constructor(big5Data, countryClickHandler) {
         this.big5Data = big5Data;
         this.agrScale = d3.scaleQuantile(d3.schemeReds[5])
             .domain(d3.extent(big5Data.map(d => d.avgAgr)));
@@ -44,6 +44,8 @@ class MapPlot {
             .domain(d3.extent(big5Data.map(d => d.avgInt)));
 
         this.noDataColor = "#afafaf";
+
+        this.countryClickHandler = countryClickHandler;
     }
 
     /**
@@ -78,7 +80,7 @@ class MapPlot {
             big5Entry.medEst,
             big5Entry.medExt,
             big5Entry.medInt,
-            big5Entry.name,
+            big5Entry.Name,
             big5Entry.n
         );
     }
@@ -105,7 +107,9 @@ class MapPlot {
             .join("path")
             .attr("d", path)
             .attr("id", (d) => d.id)
-            ;
+            .on('click', (d) => {
+                this.countryClickHandler(d, d3.event.layerX, d3.event.layerY);
+            });
         
         d3.select("#tableChart").append("tr")
             .data(countryData)

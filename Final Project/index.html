@@ -10,7 +10,7 @@
         <script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
         <script src="https://d3js.org/d3-scale-chromatic.v2.min.js"></script>
         <script src="js/mapPlot.js"></script>
-        <script src="js/script.js"></script>
+        <script src="js/countryCompare.js"></script>
         <script src="js/tableChart.js"></script>
     </head>
     <style>
@@ -22,6 +22,7 @@
                 }
     </style>
     <body>
+        <div class="map-wrapper">
         <select id="mapCategorySelection">
             <option value='agr'>Agreeableness</option>
             <option value='ext'>Extraversion</option>
@@ -30,6 +31,29 @@
             <option value='int'>Intellect</option>
         </select>
         <div id="map-chart">
+        </div>
+        <div id="country-compare" class="compare-hidden">
+            <i id="compare-close" class="fas fa-times compare-close fa-2x"></i>
+            <div id="compare-header">
+                <h3 id="compare-header-title"></h3>
+                <p id="compare-agr"></p>
+                <p id="compare-ext"></p>
+                <p id="compare-csn"></p>
+                <p id="compare-est"></p>
+                <p id="compare-int"></p>
+                <p id="compare-responses"></p>
+            </div>
+            <div class="compare-body">
+                <div style="margin-right:10px;">
+                    <p class="compare-table-headers">Most Similar Countries</p>
+                    <div id="compare-similar"></div>
+                </div>
+                <div>
+                    <p class="compare-table-headers">Most Dissimilar Countries</p>
+                    <div id="compare-different"></div>
+                </div>
+            </div>
+        </div>
         </div>
    
     <div class="ex1">
@@ -79,7 +103,7 @@
         </table>
     
     </div>
-    
+    <script src="js/script.js"></script>
 <script src="js/parcoords.js"></script>
 </body>
 

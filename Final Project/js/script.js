@@ -1,12 +1,16 @@
 
 var converter;
 var big5Data;
+var countryCompare;
 loadFile('data/countryCodeConversions.csv').then(data => {
     converter = data;
 });
+loadFile('data/DistanceBig5.csv').then(data => {
+    countryCompare = new CountryCompare(data);
+});
 loadFile('data/CountryBig5.csv').then(data => {
     big5Data = data;
-    let mapPlot = new MapPlot(big5Data);
+    let mapPlot = new MapPlot(big5Data, countryOnClickHandle);
     let tableChart = new TableChart();
     d3.json('data/world.json').then(mapData => {
         cleanCountryCodes(mapData);
@@ -18,6 +22,10 @@ loadFile('data/CountryBig5.csv').then(data => {
         })
     });
 });
+
+function countryOnClickHandle(countryData, x, y) {
+    countryCompare.showCountry(countryData, x, y);
+}
 
 /**
  * Countries in the world json data use 3 digit codes while countries in the big 5
