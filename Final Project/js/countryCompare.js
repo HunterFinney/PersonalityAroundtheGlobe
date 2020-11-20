@@ -45,11 +45,11 @@ class CountryCompare {
         this.compareWrapper.style('left', (x - 200) + 'px');
         this.compareWrapper.style('top', (y) + 'px');
         this.compareHeaderTitle.text(countryName);
-        this.agrDisplay.text('Agreeableness: ' + countryData.avgAgr);
-        this.extDisplay.text('Extraversion: ' + countryData.avgExt);
-        this.estDisplay.text('Emotional Stability: ' + countryData.avgEst);
-        this.intDisplay.text('Intelligence: ' + countryData.avgInt);
-        this.csnDisplay.text('Conscientiousness: ' + countryData.avgCsn);
+        this.agrDisplay.text('Agreeableness: ' + parseFloat(countryData.avgAgr).toFixed(3));
+        this.extDisplay.text('Extraversion: ' + parseFloat(countryData.avgExt).toFixed(3));
+        this.estDisplay.text('Emotional Stability: ' + parseFloat(countryData.avgEst).toFixed(3));
+        this.intDisplay.text('Intelligence: ' + parseFloat(countryData.avgInt).toFixed(3));
+        this.csnDisplay.text('Conscientiousness: ' + parseFloat(countryData.avgCsn).toFixed(3));
         this.responsesDisplay.text('Number of Responses: ' + countryData.n);
 
 
