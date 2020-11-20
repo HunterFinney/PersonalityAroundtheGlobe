@@ -79,7 +79,7 @@ path.pcLine{
 path.brushed{
     stroke: rgb(230, 25, 25);
     stroke-width: 2;
-    opacity: 0.4;
+    opacity: 0.5;
     fill: none
 }
   
