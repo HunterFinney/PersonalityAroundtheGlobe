@@ -20,14 +20,15 @@ d3.csv("data/Country_Region.csv").then(data => {
     
     big5 = [];
     for(let element of data) {
-        big5.push(new Country(element.Name,element.n,element.avgAgr,element.avgCsn,element.avgEst
+        big5.push(new Country(element.name,element.n,element.avgAgr,element.avgCsn,element.avgEst
             ,element.avgExt,element.avgInt,element.region,element.subregion));
     }
     //console.log(big5);
 
-    let dimensions = d3.keys(big5[0]).filter(d => d!="name" && d!="N");
+    let dimensions = d3.keys(big5[0]).filter(d => d == 'Agr' || d== 'Csn' || d == 'Est' || d== 'Ext' || d== 'Int');
     console.log(dimensions);
-    
+    //d!="name" && d!="N"
+
     let y = {};
     //console.log(d3.max(big5, d => +d[dimensions[0]]))
     for (let dim of dimensions) {
