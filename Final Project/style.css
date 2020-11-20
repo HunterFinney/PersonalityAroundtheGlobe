@@ -25,7 +25,6 @@
 }
   
 path.pcLine{
-    stroke: rgb(40, 226, 65);
     opacity: 0.3;
     fill: none
 }

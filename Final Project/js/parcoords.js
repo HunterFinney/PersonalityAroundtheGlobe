@@ -1,4 +1,4 @@
-d3.csv("data/CountryBig5.csv").then(data => {
+d3.csv("data/Country_Region.csv").then(data => {
     //console.log(data);
     
     let pcSVG = d3.select("#pcDiv").append("svg")
@@ -6,7 +6,7 @@ d3.csv("data/CountryBig5.csv").then(data => {
         .attr("width",850)
         .attr("height",600);
     
-    function Country(name,n,agr,csn,est,ext,int){
+    function Country(name,n,agr,csn,est,ext,int,region,subregion){
         this.name = name;
         this.N = n;
         this.Agr = agr;
@@ -14,11 +14,14 @@ d3.csv("data/CountryBig5.csv").then(data => {
         this.Est = est;
         this.Ext = ext;
         this.Int = int;
+        this.region = region;
+        this.subregion = subregion;
     };
     
     big5 = [];
     for(let element of data) {
-        big5.push(new Country(element.Name,element.n,element.avgAgr,element.avgCsn,element.avgEst,element.avgExt,element.avgInt));
+        big5.push(new Country(element.Name,element.n,element.avgAgr,element.avgCsn,element.avgEst
+            ,element.avgExt,element.avgInt,element.region,element.subregion));
     }
     //console.log(big5);
 
@@ -35,42 +38,15 @@ d3.csv("data/CountryBig5.csv").then(data => {
         .range([0,550]);
     } 
     //console.log(y);
-    
-    /*
-    let agrScale = d3.scaleLinear()
-    .domain([d3.max(big5, d => d.Agr),d3.min(big5, d => d.Agr)])
-    .range([10,550]);
-    console.log(d3.max(big5, d => +d.Agr));
 
-    let csnScale = d3.scaleLinear()
-    .domain([d3.max(big5, d => d.Csn),d3.min(big5, d => d.Csn)])
-    .range([10,550]);
-    */
+    let regOrdScale = d3.scaleOrdinal().domain(['','Africa','Americas','Asia','Europe','Oceania'])
+	.range(['grey', 'purple', 'red','green','yellow','blue']);
 
     let xDiscrete = d3.scalePoint()
     .range([0, 1000])
     .padding(1)
     .domain(dimensions);
 
-    /*
-    let agrLineGen = d3
-    .line()
-    .x([xDiscrete('Agr'),xDiscrete('Csn')])
-    .y(d => [agrScale(d.Agr),csnScale(d.Csn)] );
-
-    console.log(agrScale(3.5));
-
-    //draw 1st set of lines; Agr - Csn
-    pcSVG
-    .append("path")
-    .attr("class","pcLine")
-    .attr("d",agrLineGen(big5))
-
-    // Draw agr axis:
-    let agrAxis = d3.axisLeft();
-    agrAxis.scale(agrScale);
-    pcSVG.append("g").call(agrAxis).attr("transform", "translate(" + xDiscrete('Agr') + ",35)")
-    */
     const downShift = 35;
     // Add and store a brush for each axis.
     const agrBG = pcSVG.append('g').attr('transform', "translate(" + (xDiscrete(dimensions[0])-15) + ",0)").attr("id","Agr").classed('gbrushes', true)
@@ -154,7 +130,8 @@ d3.csv("data/CountryBig5.csv").then(data => {
         .data(big5)
         .join("path")
         .attr("d", path)
-        .attr("class","pcLine");
+        .attr("class","pcLine")
+        .style("stroke",d => regOrdScale(d.region));
     /*
     .style("fill", "none")
     .style("stroke", )
