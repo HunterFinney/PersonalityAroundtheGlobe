@@ -78,8 +78,44 @@
         {
             font-weight:normal;
         }
+        .overlay 
+        {
+            position: fixed;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2;
+            cursor: pointer;
+        }
+        .innerOverlay 
+        {
+            position: fixed;
+            display: block;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            background-color: rgba(255, 255, 255, 0.75);
+            z-index: 2;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: sans-serif;
+            font-weight: 700;
+            text-align: center;
+            padding-top: 25px;
+        }
     </style>
     <body>
+        <div class="overlay" id="overlay" onclick="off()"> 
+            <div class="innerOverlay" style>
+                The Big Five Personality Traits
+            </div>
+        </div>
         <select class="mySelect" id="mapCategorySelection">
             <option value='agr'>Agreeableness</option>
             <option value='ext'>Extraversion</option>
@@ -164,6 +200,11 @@
     </div>
     <script src="js/script.js"></script>
 <script src="js/parcoords.js"></script>
+<script>
+    function off() {
+      document.getElementById("overlay").style.display = "none";
+    }
+</script>
 </body>
 
 </html>
