@@ -19,12 +19,21 @@
             background-color: lightblue;
             position: absolute;
             top: 20;
-            right: 400;
-            width: 30%;
+            right: 125;
+            width: 40%;
             height: 450px;
             overflow: scroll;
+            padding-left: 50px;
         }
-
+        td
+        {
+            text-align: left;
+        }
+        th
+        {
+            text-align: left;
+            padding-right: 100px;
+        }
         div.map-wrapper 
         {
             position: relative;
@@ -113,7 +122,8 @@
     <body>
         <div class="overlay" id="overlay" onclick="off()"> 
             <div class="innerOverlay" style>
-                The Big Five Personality Traits
+                The Big Five Personality Traits<br><br>
+                Agreeableness
             </div>
         </div>
         <select class="mySelect" id="mapCategorySelection">
