@@ -210,3 +210,11 @@ path.brushed{
     background: black;
     color: white;
 }
+
+#map-key {
+    height: 50px;
+    width: 500px;
+}
+.map-controls {
+    display: flex;
+}

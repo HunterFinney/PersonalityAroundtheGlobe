@@ -1,4 +1,3 @@
-
 /**
  * Object to hold the necessary GeoJson data combined with the big5 data on each country
  */
@@ -24,7 +23,12 @@ class CountryData {
     }
 }
 
+KEY_STEP_WIDTH = 50;
+KEY_LEFT_MARGIN = 50;
+
 class MapPlot {
+
+    
     /**
      * Builds the necessary color scales needed for the map
      * 
@@ -32,6 +36,45 @@ class MapPlot {
      */
     constructor(big5Data, countryClickHandler) {
         this.big5Data = big5Data;
+
+        this.mapKey = d3.select('#map-key');
+        this.mapKey.append('g')
+            .attr('transform', 'translate(' + KEY_LEFT_MARGIN + ',25)');
+        this.leftKeyText = this.mapKey.append('text')
+            .attr('id', 'map-key-less')
+            .attr('x', KEY_LEFT_MARGIN / 2)
+            .attr('y', 15)
+            .text('Left text');
+        this.rightKeyText = this.mapKey.append('text')
+            .attr('id', 'map-key-more')
+            .attr('x', (KEY_STEP_WIDTH * 5) + KEY_LEFT_MARGIN / 2)
+            .attr('y', 15)
+            .text('Right text');
+
+        //Extents will be needed for setting the color key later
+        this.extents = Array();
+        this.scales = Array();
+        
+        this.extents['agr'] = d3.extent(big5Data.map(d => d.avgAgr));
+        this.scales['agr'] = d3.scaleQuantile(d3.schemeReds[5])
+            .domain(d3.extent(big5Data.map(d => d.avgAgr)));
+        
+        this.extents['csn'] = d3.extent(big5Data.map(d => d.avgCsn));
+        this.scales['csn'] = d3.scaleQuantile(d3.schemePurples[5])
+            .domain(d3.extent(big5Data.map(d => d.avgCsn)));
+        
+        this.extents['ext'] = d3.extent(big5Data.map(d => d.avgExt));
+        this.scales['ext'] = d3.scaleQuantile(d3.schemeOranges[5])
+            .domain(d3.extent(big5Data.map(d => d.avgExt)));
+
+        this.extents['est'] = d3.extent(big5Data.map(d => d.avgEst));
+        this.scales['est'] = d3.scaleQuantile(d3.schemeBlues[5])
+            .domain(d3.extent(big5Data.map(d => d.avgEst)));
+
+        this.extents['int'] = d3.extent(big5Data.map(d => d.avgInt));
+        this.scales['int'] = d3.scaleQuantile(d3.schemeGreens[5])
+            .domain(d3.extent(big5Data.map(d => d.avgInt)));
+
         this.agrScale = d3.scaleQuantile(d3.schemeReds[5])
             .domain(d3.extent(big5Data.map(d => d.avgAgr)));
         this.csnScale = d3.scaleQuantile(d3.schemePurples[5])
@@ -43,9 +86,14 @@ class MapPlot {
         this.intScale = d3.scaleQuantile(d3.schemeGreens[5])
             .domain(d3.extent(big5Data.map(d => d.avgInt)));
 
+        console.log(this.extents);
+        console.log(this.scales['int'](2.3));
+
         this.noDataColor = "#afafaf";
 
         this.countryClickHandler = countryClickHandler;
+
+        
     }
 
     /**
@@ -120,14 +168,68 @@ class MapPlot {
     }
 
     /**
+     * Switches the map's key to use the newly selected category
+     * 
+     * @param {string} newCategory three letter category code
+     */
+    setKey(newCategory) {
+        let extents = this.extents[newCategory];
+        let step = (extents[1] - extents[0]) / 5;
+        let data = d3.range(extents[0], extents[1], step);
+
+        
+        let scale;
+        let displayCategory = "";
+        switch (newCategory) {
+            case 'agr':
+                scale = this.agrScale;
+                displayCategory = "Agressive";
+                break;
+            case 'ext':
+                scale = this.extScale;
+                displayCategory = "Extroverted";
+                break;
+            case 'est': 
+                scale = this.estScale;
+                displayCategory = "Emotionally Stable";
+                break;
+            case 'csn':
+                scale = this.csnScale;
+                displayCategory = "Conscientious";
+                break;
+            case 'int':
+                scale = this.intScale;
+                displayCategory = "Intelligent";
+                break;
+        }
+
+        let rectSelection = this.mapKey.select('g')
+            .selectAll('rect')
+            .data(data)
+            .enter()
+            .append('rect');
+        rectSelection
+            .attr('x', (d,i) => KEY_STEP_WIDTH * i)
+            .attr('y', 0)
+            .attr('height', 10)
+            .attr('width', KEY_STEP_WIDTH)
+            .attr('fill', (d) => scale(d));
+        this.mapKey.select('g').selectAll('rect')
+            .attr('fill', (d) => scale(d));
+        
+
+        this.leftKeyText.text('Less ' + displayCategory);
+        this.rightKeyText.text('More ' + displayCategory);
+    }
+
+    /**
      * Switches the map to show data for a different category
      * 
      * @param {string} newCategory three letter category code
      */
-
     changeMapCategory(newCategory) {
         let countrySelection = d3.select('#map-chart').select('svg').selectAll('path');
-
+        this.setKey(newCategory);
         switch (newCategory) {
             case 'agr':
                 countrySelection.attr('fill', (d) => {
