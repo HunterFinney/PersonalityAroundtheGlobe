@@ -20,6 +20,27 @@ loadFile('data/CountryBig5.csv').then(data => {
             mapPlot.changeMapCategory(d3.event.target.value);
             tableChart.changeMapCategory(d3.event.target.value);
         })
+        d3.select('#AgrButton').on('click', (e) => {
+            tableChart.AgrButton();
+        })
+        d3.select('#CsnButton').on('click', (e) => {
+            tableChart.CsnButton();
+        })
+        d3.select('#ExtButton').on('click', (e) => {
+            tableChart.ExtButton();
+        })
+        d3.select('#EstButton').on('click', (e) => {
+            tableChart.EstButton();
+        })
+        d3.select('#IntButton').on('click', (e) => {
+            tableChart.IntButton();
+        })
+        d3.select('#NameButton').on('click', (e) => {
+            tableChart.NameButton();
+        })
+        d3.select('#NButton').on('click', (e) => {
+            tableChart.NButton();
+        })
     });
 });
 
