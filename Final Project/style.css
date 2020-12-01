@@ -1,22 +1,23 @@
 div.myTable 
 {
-    background-color: lightblue;
+    background-color:rgb(238, 238, 238);
     position: absolute;
-    top: 20;
-    right: 50;
-    width: 47%;
-    height: 450px;
+    top: 100;
+    right: 120;
+    width: 40%;
+    height: 500px;
     overflow: scroll;
-    padding-left: 50px;
+    padding-left: 0px;
 }
 td
 {
-    text-align: left;
+    text-align: center;
+    padding-right: 0px;
 }
 th
 {
-    text-align: left;
-    padding-right: 100px;
+    text-align: center;
+    padding-right: 0px;
     font-size: 20px;
 }
 div.map-wrapper 
@@ -24,6 +25,33 @@ div.map-wrapper
     position: relative;
 }
 
+button
+{
+    background-color: #CAE7FA; /* Green */
+    border: 2px solid black;
+    border-radius: 3px;
+    color: black;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover 
+{
+    background-color:  #a5bbca;
+}
+
+div.tableLabel 
+{
+    font-size: 26px;
+    position: absolute;
+    top: 45;
+    right: 110;
+    width: 40%;
+    height: 100px;
+}
 div.myDataTable 
 {
     position: absolute;
@@ -31,6 +59,7 @@ div.myDataTable
     right: 50;
     width: 50%;
     height: 300px;
+    background-color:rgb(238, 238, 238);
 }
 .mySelect {
     display: block;
