@@ -103,6 +103,8 @@ class CountryCompare {
             ];
         });
 
+        console.log(similarCountries);
+
         //Adds data from big5 data set
         //Order is compliant with requirements to draw bar chart
         differentCountries.forEach((d) => {
@@ -133,7 +135,9 @@ class CountryCompare {
                 .attr('height', '50px')
                 .attr('width', '75px');
         } else {
-            this.compareSimilar.selectAll('div').data(similarCountries);
+            console.log(similarCountries);
+            this.compareSimilar.selectAll('p').data(similarCountries);
+            this.compareSimilar.selectAll('svg').data(similarCountries);
         }
         this.compareSimilar.exit()
             .remove();
@@ -147,7 +151,8 @@ class CountryCompare {
                 .attr('height', '50px')
                 .attr('width', '75px');
         } else {
-            this.compareDifferent.selectAll('div').data(differentCountries);
+            this.compareDifferent.selectAll('p').data(differentCountries);
+            this.compareDifferent.selectAll('svg').data(differentCountries);
         }
         this.compareDifferent.exit()
             .remove();
@@ -161,6 +166,7 @@ class CountryCompare {
         //Draw bar charts for each comparison entry
         this.compareSimilar.selectAll('svg')
             .each((d,i,j) => {
+                console.log(d);
                 this.drawMiniBarChart(d3.select(j[i]), d.Country2Data);
                 
             });
