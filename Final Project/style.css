@@ -43,6 +43,13 @@ button:hover
     background-color:  #a5bbca;
 }
 
+div.clickToSort 
+{
+    font-size: 16px;
+    position: absolute;
+    top: 80;
+    right: 400;
+}
 div.tableLabel 
 {
     font-size: 26px;
@@ -50,7 +57,6 @@ div.tableLabel
     top: 45;
     right: 110;
     width: 40%;
-    height: 100px;
 }
 div.myDataTable 
 {
@@ -135,6 +141,7 @@ div.myDataTable
 #map-chart {
     height: 450px;
     width: 700px;
+    cursor: pointer;
 }
 
 .map-wrapper {
