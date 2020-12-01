@@ -119,6 +119,7 @@ div.myDataTable
 .compare-body {
     display: flex;
     columns: 2;
+    justify-content: space-between;
 }
 
 .compare-body * {
@@ -133,8 +134,14 @@ div.myDataTable
     position: absolute;
     background-color: #fff;
     padding: 20px;
-    width: 400px;
+    width: 450px;
     margin: auto;
+    z-index: 1000;
+}
+
+.compare-entry {
+    display: flex;
+    justify-content: space-between;
 }
 
 .compare-hidden {
@@ -217,4 +224,10 @@ path.brushed{
 }
 .map-controls {
     display: flex;
+}
+
+#compare-header-svg {
+    width: 75px;
+    height: 50px;
+    margin-left: 50px;
 }

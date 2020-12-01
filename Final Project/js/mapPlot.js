@@ -58,14 +58,14 @@ class MapPlot {
         this.extents['agr'] = d3.extent(big5Data.map(d => d.avgAgr));
         this.scales['agr'] = d3.scaleQuantile(d3.schemeReds[5])
             .domain(d3.extent(big5Data.map(d => d.avgAgr)));
+
+        this.extents['ext'] = d3.extent(big5Data.map(d => d.avgExt));
+        this.scales['ext'] = d3.scaleQuantile(d3.schemeOranges[5])
+            .domain(d3.extent(big5Data.map(d => d.avgExt)));
         
         this.extents['csn'] = d3.extent(big5Data.map(d => d.avgCsn));
         this.scales['csn'] = d3.scaleQuantile(d3.schemePurples[5])
             .domain(d3.extent(big5Data.map(d => d.avgCsn)));
-        
-        this.extents['ext'] = d3.extent(big5Data.map(d => d.avgExt));
-        this.scales['ext'] = d3.scaleQuantile(d3.schemeOranges[5])
-            .domain(d3.extent(big5Data.map(d => d.avgExt)));
 
         this.extents['est'] = d3.extent(big5Data.map(d => d.avgEst));
         this.scales['est'] = d3.scaleQuantile(d3.schemeBlues[5])
@@ -85,9 +85,6 @@ class MapPlot {
             .domain(d3.extent(big5Data.map(d => d.avgEst)));
         this.intScale = d3.scaleQuantile(d3.schemeGreens[5])
             .domain(d3.extent(big5Data.map(d => d.avgInt)));
-
-        console.log(this.extents);
-        console.log(this.scales['int'](2.3));
 
         this.noDataColor = "#afafaf";
 
@@ -277,5 +274,9 @@ class MapPlot {
                 });
                 return;
         }
+    }
+
+    getExtents() {
+        return this.extents;
     }
 }

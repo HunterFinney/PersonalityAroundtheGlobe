@@ -5,13 +5,14 @@ var countryCompare;
 loadFile('data/countryCodeConversions.csv').then(data => {
     converter = data;
 });
-loadFile('data/DistanceBig5.csv').then(data => {
-    countryCompare = new CountryCompare(data);
-});
+
 loadFile('data/CountryBig5.csv').then(data => {
     big5Data = data;
     let mapPlot = new MapPlot(big5Data, countryOnClickHandle);
     let tableChart = new TableChart();
+    loadFile('data/DistanceBig5.csv').then(data => {
+        countryCompare = new CountryCompare(data, big5Data, mapPlot);
+    });
     d3.json('data/world.json').then(mapData => {
         cleanCountryCodes(mapData);
         mapPlot.drawMap(mapData);
