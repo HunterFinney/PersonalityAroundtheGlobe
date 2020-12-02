@@ -2,37 +2,37 @@ class TableChart
 {
     init()
     {
-        this.tabulate(big5, ['name', 'Agr', 'N']);
+        this.tabulate(big5Table, ['name', 'Agr', 'N']);
     }
     AgrButton()
     {
         d3.select('#tableChartData2').remove();
         d3.select('#tableChartData').append("tbody").attr("id", "tableChartData2");
         var min_index = 0;
-        for(var i = 0; i < big5.length-1; i++)
+        for(var i = 0; i < big5Table.length-1; i++)
         {
             min_index = i;
-            for(var j = i +1; j < big5.length; j++)
+            for(var j = i +1; j < big5Table.length; j++)
             {
-                if(Number(big5[j].Agr) < Number(big5[min_index].Agr))
+                if(Number(big5Table[j].Agr) < Number(big5Table[min_index].Agr))
                 {
                      min_index = j;
                 }
-                var temp= big5[min_index];
-                big5[min_index] = big5[i];
-                big5[i] = temp;
+                var temp= big5Table[min_index];
+                big5Table[min_index] = big5Table[i];
+                big5Table[i] = temp;
             }
         }
         if(isAscend)
         {   
             isAscend = false;
-            this.tabulate(big5, ['name', 'Agr', 'N']);
+            this.tabulate(big5Table, ['name', 'Agr', 'N']);
         }
         else
         {
             isAscend = true;
-            big5.reverse();
-            this.tabulate(big5, ['name', 'Agr', 'N']);
+            big5Table.reverse();
+            this.tabulate(big5Table, ['name', 'Agr', 'N']);
         }
     }
     CsnButton()
@@ -40,30 +40,30 @@ class TableChart
         d3.select('#tableChartData2').remove();
         d3.select('#tableChartData').append("tbody").attr("id", "tableChartData2");
         var min_index = 0;
-        for(var i = 0; i < big5.length-1; i++)
+        for(var i = 0; i < big5Table.length-1; i++)
         {
             min_index = i;
-            for(var j = i +1; j < big5.length; j++)
+            for(var j = i +1; j < big5Table.length; j++)
             {
-                if(Number(big5[j].Csn) < Number(big5[min_index].Csn))
+                if(Number(big5Table[j].Csn) < Number(big5Table[min_index].Csn))
                 {
                      min_index = j;
                 }
-                var temp= big5[min_index];
-                big5[min_index] = big5[i];
-                big5[i] = temp;
+                var temp= big5Table[min_index];
+                big5Table[min_index] = big5Table[i];
+                big5Table[i] = temp;
             }
         }
         if(isAscend)
         {   
             isAscend = false;
-            this.tabulate(big5, ['name', 'Csn', 'N']);
+            this.tabulate(big5Table, ['name', 'Csn', 'N']);
         }
         else
         {
             isAscend = true;
-            big5.reverse();
-            this.tabulate(big5, ['name', 'Csn', 'N']);
+            big5Table.reverse();
+            this.tabulate(big5Table, ['name', 'Csn', 'N']);
         }
     }
     ExtButton()
@@ -71,30 +71,30 @@ class TableChart
         d3.select('#tableChartData2').remove();
         d3.select('#tableChartData').append("tbody").attr("id", "tableChartData2");
         var min_index = 0;
-        for(var i = 0; i < big5.length-1; i++)
+        for(var i = 0; i < big5Table.length-1; i++)
         {
             min_index = i;
-            for(var j = i +1; j < big5.length; j++)
+            for(var j = i +1; j < big5Table.length; j++)
             {
-                if(Number(big5[j].Ext) < Number(big5[min_index].Ext))
+                if(Number(big5Table[j].Ext) < Number(big5Table[min_index].Ext))
                 {
                      min_index = j;
                 }
-                var temp= big5[min_index];
-                big5[min_index] = big5[i];
-                big5[i] = temp;
+                var temp= big5Table[min_index];
+                big5Table[min_index] = big5Table[i];
+                big5Table[i] = temp;
             }
         }
         if(isAscend)
         {   
             isAscend = false;
-            this.tabulate(big5, ['name', 'Ext', 'N']);
+            this.tabulate(big5Table, ['name', 'Ext', 'N']);
         }
         else
         {
             isAscend = true;
-            big5.reverse();
-            this.tabulate(big5, ['name', 'Ext', 'N']);
+            big5Table.reverse();
+            this.tabulate(big5Table, ['name', 'Ext', 'N']);
         }
     }
     EstButton()
@@ -102,30 +102,30 @@ class TableChart
         d3.select('#tableChartData2').remove();
         d3.select('#tableChartData').append("tbody").attr("id", "tableChartData2");
         var min_index = 0;
-        for(var i = 0; i < big5.length-1; i++)
+        for(var i = 0; i < big5Table.length-1; i++)
         {
             min_index = i;
-            for(var j = i +1; j < big5.length; j++)
+            for(var j = i +1; j < big5Table.length; j++)
             {
-                if(Number(big5[j].Est) < Number(big5[min_index].Est))
+                if(Number(big5Table[j].Est) < Number(big5Table[min_index].Est))
                 {
                      min_index = j;
                 }
-                var temp= big5[min_index];
-                big5[min_index] = big5[i];
-                big5[i] = temp;
+                var temp= big5Table[min_index];
+                big5Table[min_index] = big5Table[i];
+                big5Table[i] = temp;
             }
         }
         if(isAscend)
         {   
             isAscend = false;
-            this.tabulate(big5, ['name', 'Est', 'N']);
+            this.tabulate(big5Table, ['name', 'Est', 'N']);
         }
         else
         {
             isAscend = true;
-            big5.reverse();
-            this.tabulate(big5, ['name', 'Est', 'N']);
+            big5Table.reverse();
+            this.tabulate(big5Table, ['name', 'Est', 'N']);
         }
     }
     IntButton()
@@ -133,30 +133,30 @@ class TableChart
         d3.select('#tableChartData2').remove();
         d3.select('#tableChartData').append("tbody").attr("id", "tableChartData2");
         var min_index = 0;
-        for(var i = 0; i < big5.length-1; i++)
+        for(var i = 0; i < big5Table.length-1; i++)
         {
             min_index = i;
-            for(var j = i +1; j < big5.length; j++)
+            for(var j = i +1; j < big5Table.length; j++)
             {
-                if(Number(big5[j].Int) < Number(big5[min_index].Int))
+                if(Number(big5Table[j].Int) < Number(big5Table[min_index].Int))
                 {
                      min_index = j;
                 }
-                var temp= big5[min_index];
-                big5[min_index] = big5[i];
-                big5[i] = temp;
+                var temp= big5Table[min_index];
+                big5Table[min_index] = big5Table[i];
+                big5Table[i] = temp;
             }
         }
         if(isAscend)
         {   
             isAscend = false;
-            this.tabulate(big5, ['name', 'Int', 'N']);
+            this.tabulate(big5Table, ['name', 'Int', 'N']);
         }
         else
         {
             isAscend = true;
-            big5.reverse();
-            this.tabulate(big5, ['name', 'Int', 'N']);
+            big5Table.reverse();
+            this.tabulate(big5Table, ['name', 'Int', 'N']);
         }
     }
     NameButton()
@@ -164,18 +164,18 @@ class TableChart
         d3.select('#tableChartData2').remove();
         d3.select('#tableChartData').append("tbody").attr("id", "tableChartData2");
         var min_index = 0;
-        for(var i = 0; i < big5.length-1; i++)
+        for(var i = 0; i < big5Table.length-1; i++)
         {
             min_index = i;
-            for(var j = i +1; j < big5.length; j++)
+            for(var j = i +1; j < big5Table.length; j++)
             {
-                if(big5[j].name < big5[min_index].name)
+                if(big5Table[j].name < big5Table[min_index].name)
                 {
                      min_index = j;
                 }
-                var temp= big5[min_index];
-                big5[min_index] = big5[i];
-                big5[i] = temp;
+                var temp= big5Table[min_index];
+                big5Table[min_index] = big5Table[i];
+                big5Table[i] = temp;
             }
         }
         if(isAscend)
@@ -183,41 +183,41 @@ class TableChart
             isAscend = false;
             switch (currentCategory) {
                 case 'agr':
-                    this.tabulate(big5, ['name', 'Agr', 'N']);
+                    this.tabulate(big5Table, ['name', 'Agr', 'N']);
                     return;
                 case 'csn':
-                    this.tabulate(big5, ['name', 'Csn', 'N']);
+                    this.tabulate(big5Table, ['name', 'Csn', 'N']);
                     return;
                 case 'ext':
-                    this.tabulate(big5, ['name', 'Ext', 'N']);
+                    this.tabulate(big5Table, ['name', 'Ext', 'N']);
                     return;
                 case 'est':
-                    this.tabulate(big5, ['name', 'Est', 'N']);
+                    this.tabulate(big5Table, ['name', 'Est', 'N']);
                     return;
                 case 'int':
-                    this.tabulate(big5, ['name', 'Int', 'N']);
+                    this.tabulate(big5Table, ['name', 'Int', 'N']);
                     return;
             }
         }
         else
         {
             isAscend = true;
-            big5.reverse();
+            big5Table.reverse();
             switch (currentCategory) {
                 case 'agr':
-                    this.tabulate(big5, ['name', 'Agr', 'N']);
+                    this.tabulate(big5Table, ['name', 'Agr', 'N']);
                     return;
                 case 'csn':
-                    this.tabulate(big5, ['name', 'Csn', 'N']);
+                    this.tabulate(big5Table, ['name', 'Csn', 'N']);
                     return;
                 case 'ext':
-                    this.tabulate(big5, ['name', 'Ext', 'N']);
+                    this.tabulate(big5Table, ['name', 'Ext', 'N']);
                     return;
                 case 'est':
-                    this.tabulate(big5, ['name', 'Est', 'N']);
+                    this.tabulate(big5Table, ['name', 'Est', 'N']);
                     return;
                 case 'int':
-                    this.tabulate(big5, ['name', 'Int', 'N']);
+                    this.tabulate(big5Table, ['name', 'Int', 'N']);
                     return;
             }
         }
@@ -227,18 +227,18 @@ class TableChart
         d3.select('#tableChartData2').remove();
         d3.select('#tableChartData').append("tbody").attr("id", "tableChartData2");
         var min_index = 0;
-        for(var i = 0; i < big5.length-1; i++)
+        for(var i = 0; i < big5Table.length-1; i++)
         {
             min_index = i;
-            for(var j = i +1; j < big5.length; j++)
+            for(var j = i +1; j < big5Table.length; j++)
             {
-                if(Number(big5[j].N) < Number(big5[min_index].N))
+                if(Number(big5Table[j].N) < Number(big5Table[min_index].N))
                 {
                      min_index = j;
                 }
-                var temp= big5[min_index];
-                big5[min_index] = big5[i];
-                big5[i] = temp;
+                var temp= big5Table[min_index];
+                big5Table[min_index] = big5Table[i];
+                big5Table[i] = temp;
             }
         }
         if(isAscend)
@@ -246,41 +246,41 @@ class TableChart
             isAscend = false;
             switch (currentCategory) {
                 case 'agr':
-                    this.tabulate(big5, ['name', 'Agr', 'N']);
+                    this.tabulate(big5Table, ['name', 'Agr', 'N']);
                     return;
                 case 'csn':
-                    this.tabulate(big5, ['name', 'Csn', 'N']);
+                    this.tabulate(big5Table, ['name', 'Csn', 'N']);
                     return;
                 case 'ext':
-                    this.tabulate(big5, ['name', 'Ext', 'N']);
+                    this.tabulate(big5Table, ['name', 'Ext', 'N']);
                     return;
                 case 'est':
-                    this.tabulate(big5, ['name', 'Est', 'N']);
+                    this.tabulate(big5Table, ['name', 'Est', 'N']);
                     return;
                 case 'int':
-                    this.tabulate(big5, ['name', 'Int', 'N']);
+                    this.tabulate(big5Table, ['name', 'Int', 'N']);
                     return;
             }
         }
         else
         {
             isAscend = true;
-            big5.reverse();
+            big5Table.reverse();
             switch (currentCategory) {
                 case 'agr':
-                    this.tabulate(big5, ['name', 'Agr', 'N']);
+                    this.tabulate(big5Table, ['name', 'Agr', 'N']);
                     return;
                 case 'csn':
-                    this.tabulate(big5, ['name', 'Csn', 'N']);
+                    this.tabulate(big5Table, ['name', 'Csn', 'N']);
                     return;
                 case 'ext':
-                    this.tabulate(big5, ['name', 'Ext', 'N']);
+                    this.tabulate(big5Table, ['name', 'Ext', 'N']);
                     return;
                 case 'est':
-                    this.tabulate(big5, ['name', 'Est', 'N']);
+                    this.tabulate(big5Table, ['name', 'Est', 'N']);
                     return;
                 case 'int':
-                    this.tabulate(big5, ['name', 'Int', 'N']);
+                    this.tabulate(big5Table, ['name', 'Int', 'N']);
                     return;
             }
         }
@@ -294,19 +294,19 @@ class TableChart
         d3.select('#tableChartData').append("tbody").attr("id", "tableChartData2");
         switch (newCategory) {
             case 'agr':
-                this.tabulate(big5, ['name', 'Agr', 'N']);
+                this.tabulate(big5Table, ['name', 'Agr', 'N']);
                 return;
             case 'csn':
-                this.tabulate(big5, ['name', 'Csn', 'N']);
+                this.tabulate(big5Table, ['name', 'Csn', 'N']);
                 return;
             case 'ext':
-                this.tabulate(big5, ['name', 'Ext', 'N']);
+                this.tabulate(big5Table, ['name', 'Ext', 'N']);
                 return;
             case 'est':
-                this.tabulate(big5, ['name', 'Est', 'N']);
+                this.tabulate(big5Table, ['name', 'Est', 'N']);
                 return;
             case 'int':
-                this.tabulate(big5, ['name', 'Int', 'N']);
+                this.tabulate(big5Table, ['name', 'Int', 'N']);
                 return;
         }
     }
@@ -426,7 +426,7 @@ d3.csv("data/Country_Region.csv").then(data => {
         this.Int = Math.round(+int*1000)/1000;
     };
     isAscend = false;
-    big5 = [];
+    big5Table = [];
     big5Agr = [];
     big5Csn = [];
     big5Est = [];
@@ -437,9 +437,9 @@ d3.csv("data/Country_Region.csv").then(data => {
     currentCategory = "agr";
     
     for(let element of data) {
-        big5.push(new Country(element.name,element.n,Math.round(+element.avgAgr*1000)/1000,Math.round(+element.avgCsn*1000)/1000,Math.round(+element.avgEst*1000)/1000,Math.round(+element.avgExt*1000)/1000,Math.round(+element.avgInt*1000)/1000));
+        big5Table.push(new Country(element.name,element.n,Math.round(+element.avgAgr*1000)/1000,Math.round(+element.avgCsn*1000)/1000,Math.round(+element.avgEst*1000)/1000,Math.round(+element.avgExt*1000)/1000,Math.round(+element.avgInt*1000)/1000));
     }
-    // big5temp = big5;
+    // big5temp = big5Table;
     // for( i = 0; i < big5temp.length-1; i++)
     // {
     //     min_index = i;
