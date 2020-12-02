@@ -71,6 +71,18 @@ div.myDataTable
     height: 300px;
     background-color:rgb(238, 238, 238);
 }
+
+.paraLegend 
+{
+    position: absolute;
+    top: 750;
+    left: 50;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color:rgb(255, 255, 255);
+}
 .mySelect {
     display: block;
     font-size: 16px;
