@@ -43,13 +43,11 @@ class MapPlot {
         this.leftKeyText = this.mapKey.append('text')
             .attr('id', 'map-key-less')
             .attr('x', KEY_LEFT_MARGIN / 2)
-            .attr('y', 15)
-            .text('Left text');
+            .attr('y', 15);
         this.rightKeyText = this.mapKey.append('text')
             .attr('id', 'map-key-more')
             .attr('x', (KEY_STEP_WIDTH * 5) + KEY_LEFT_MARGIN / 2)
-            .attr('y', 15)
-            .text('Right text');
+            .attr('y', 15);
 
         //Extents will be needed for setting the color key later
         this.extents = Array();
