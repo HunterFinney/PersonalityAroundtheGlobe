@@ -178,7 +178,7 @@ class MapPlot {
         switch (newCategory) {
             case 'agr':
                 scale = this.agrScale;
-                displayCategory = "Agressive";
+                displayCategory = "Agreeable";
                 break;
             case 'ext':
                 scale = this.extScale;
