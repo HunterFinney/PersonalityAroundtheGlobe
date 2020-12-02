@@ -245,8 +245,8 @@ path.brushed{
 }
 
 #tableDiv {
-    overflow-y: scroll;
-    margin-left: 700px;
+    overflow: scroll;
+    margin-left: 750px;
 }
   
 .sortable {

@@ -233,6 +233,11 @@ d3.csv("data/Country_Region.csv").then(data => {
         {
             sorted: false,
             ascending: false,
+            key: 'region'
+        },
+        {
+            sorted: false,
+            ascending: false,
             key: 'N'
         },
         {
