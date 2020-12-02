@@ -5,7 +5,7 @@ Visualization:
 YouTube:
 
 Instructions to use our visualization:
-This website is optimized for 1080p monitors at full screen resolution. While the visualization would still work, there may be overlapping views or unreasonable layouts in differing formats.
+This website is optimized for 1920p by 1080p monitors at full screen resolution. While the visualization would still work, there may be overlapping views or unreasonable layouts in differing formats.
 
 To dismiss the opening debriefing click anywhere on the screen.
 
