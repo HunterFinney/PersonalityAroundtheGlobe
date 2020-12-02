@@ -238,11 +238,15 @@ path.brushed{
 .no-display {
     display: none !important;
 }
-  
-  
+
+#pcDiv{
+    width: 55%;
+    float: left;
+}
+
 #tableDiv {
     overflow-y: scroll;
-    height: 750px;
+    margin-left: 600px;
 }
   
 .sortable {

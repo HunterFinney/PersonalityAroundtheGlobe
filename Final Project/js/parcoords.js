@@ -176,4 +176,121 @@ d3.csv("data/Country_Region.csv").then(data => {
     cellSelect.text(d => d);
     }
     drawTable(big5);
+
+    // Add sorting
+    let hAscend = function(colName){
+        return (a,b) => {
+            //console.log(typeof(a[colName]))
+            if(colName == "name") {
+                a = a[colName];
+                b = b[colName];
+            } else {
+                a = +a[colName];
+                b = +b[colName];
+            }
+            if ( a > b )
+            {
+              return 1;
+            }
+            else if (a < b ) {
+              return -1;
+            }
+            return 0;
+        }
+    }
+
+    let hDescend = function(colName){
+        return (a,b) => {
+            //console.log(typeof(a[colName]))
+            if(colName == "name") {
+                a = a[colName];
+                b = b[colName];
+           } else {
+                a = +a[colName];
+                b = +b[colName];
+            }
+            if ( a > b )
+            {
+            return -1;
+            }
+            else if (a < b ) {
+            return 1;
+            }
+            return 0;
+        }
+    }
+
+    headerData = [
+        {
+            sorted: false,
+            ascending: false,
+            key: 'name'
+        },
+        {
+            sorted: false,
+            ascending: false,
+            key: 'N'
+        },
+        {
+            sorted: false,
+            ascending: false,
+            key: 'Agr'
+        },
+        {
+            sorted: false,
+            ascending: false,
+            key: 'Csn'
+        },
+        {
+            sorted: false,
+            ascending: false,
+            key: 'Est'
+        },
+        {
+            sorted: false,
+            ascending: false,
+            key: 'Ext'
+        },
+        {
+            sorted: false,
+            ascending: false,
+            key: 'Int'
+        }
+    ];
+
+    let hDat = d3.select("#pcColumnHeaders").selectAll("th").data(headerData).join("th")
+    hDat.on("click", d => {
+        console.log(d)
+        if(d.ascending){
+            if( typeof subDat == "undefined"){
+                big5.sort(hDescend(d.key))  
+                drawTable(big5); 
+            } else {
+                subDat.sort(hDescend(d.key));
+                drawTable(subDat); 
+            }
+            d.sorted = true;
+            d.ascending = false;
+             
+        } else {
+            if( typeof subDat == "undefined"){
+                big5.sort(hAscend(d.key));
+                drawTable(big5); 
+            } else {
+                subDat.sort(hAscend(d.key));
+                drawTable(subDat); 
+            }
+            d.sorted = true;
+            d.ascending = true;
+             
+        }
+        for(let h of headerData){
+            if(h.key != d.key){
+           h.sorted = false;
+           h.ascending = false;
+            }
+        }
+    });
+
+
 })
