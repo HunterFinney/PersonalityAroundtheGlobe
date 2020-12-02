@@ -39,6 +39,7 @@ class CountryCompare {
      * @param {*} y Click location to determine where to draw comparison view
      */
     showCountry(countryData, x, y) {
+        
         let countryName = countryData.name;
         let countryDistanceData = this.distanceData
             .filter( d => 
@@ -183,6 +184,7 @@ class CountryCompare {
     clearCountry() {
         this.compareWrapper.style('left', '-1000px');
         this.compareWrapper.classed('compare-hidden', true);
+        this.mapRef.clearHighlight();
     }
 
     /**

@@ -151,7 +151,24 @@ class MapPlot {
             .attr("d", path)
             .attr("id", (d) => d.id)
             .on('click', (d) => {
+                if (d.avgAgr === undefined ||
+                    d.avgCsn === undefined ||
+                    d.avgEst === undefined ||
+                    d.avgExt === undefined ||
+                    d.avgInt === undefined ) {
+                        return;
+                    }
+                this.clearHighlight();
+                d3.select(d3.event.target).attr('stroke', '#121212');
+                d3.select(d3.event.target).attr('stroke-width', '2');
                 this.countryClickHandler(d, d3.event.layerX, d3.event.layerY);
+            })
+            .on('mouseover', (d) => {
+                d3.select(d3.event.target).attr('stroke', '#1f1f1f');
+                d3.select(d3.event.target).attr('stroke-width', '1');
+            })
+            .on('mouseout', (d) => {
+                this.clearHighlight();
             });
         
         d3.select("#tableChart").append("tr")
@@ -160,6 +177,11 @@ class MapPlot {
             .attr("id", (d) => d.id)
             ;
         this.changeMapCategory('agr');
+    }
+
+    clearHighlight() {
+        d3.select('#map-chart').select('svg').selectAll('path')
+            .attr('stroke-width', '0');
     }
 
     /**
