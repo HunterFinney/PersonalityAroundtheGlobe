@@ -58,7 +58,12 @@ class CountryCompare {
         });
 
         this.compareWrapper.classed('compare-hidden', false);
-        this.compareWrapper.style('left', (x - 200) + 'px');
+        if (x < 200) {
+            this.compareWrapper.style('left', '0px');
+        } else {
+            this.compareWrapper.style('left', (x - 200) + 'px');
+        }
+        
         this.compareWrapper.style('top', (y) + 'px');
         this.compareHeaderTitle.text(countryName);
         this.agrDisplay.text('Agreeableness: ' + parseFloat(countryData.avgAgr).toFixed(3));
@@ -160,9 +165,11 @@ class CountryCompare {
             
         //Apply country name text to p elements
         this.compareSimilar.selectAll('p')
-            .text(d => d.Country2);
+            .text(d => d.Country2)
+            .classed('compare-country-entry', true);
         this.compareDifferent.selectAll('p')
-            .text(d => d.Country2);
+            .text(d => d.Country2)
+            .classed('compare-country-entry', true);
 
         //Draw bar charts for each comparison entry
         this.compareSimilar.selectAll('svg')
