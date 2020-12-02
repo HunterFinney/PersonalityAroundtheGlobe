@@ -134,7 +134,7 @@ class MapPlot {
      * @param {TopoJson} worldData Data for each country on the map
      */
     drawMap(worldData) {
-        let path = d3.geoPath().projection(d3.geoWinkel3().scale(140).translate([365, 225]));
+        let path = d3.geoPath().projection(d3.geoWinkel3().scale(180).translate([415, 300])); //140,365,225
 
         let geoJson = topojson.feature(worldData, worldData.objects.countries);
         
