@@ -109,8 +109,6 @@ class CountryCompare {
             ];
         });
 
-        console.log(similarCountries);
-
         //Adds data from big5 data set
         //Order is compliant with requirements to draw bar chart
         differentCountries.forEach((d) => {
@@ -141,7 +139,6 @@ class CountryCompare {
                 .attr('height', '50px')
                 .attr('width', '75px');
         } else {
-            console.log(similarCountries);
             this.compareSimilar.selectAll('p').data(similarCountries);
             this.compareSimilar.selectAll('svg').data(similarCountries);
         }
@@ -174,7 +171,6 @@ class CountryCompare {
         //Draw bar charts for each comparison entry
         this.compareSimilar.selectAll('svg')
             .each((d,i,j) => {
-                console.log(d);
                 this.drawMiniBarChart(d3.select(j[i]), d.Country2Data);
                 
             });
