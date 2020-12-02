@@ -65,7 +65,7 @@ d3.csv("data/Country_Region.csv").then(data => {
     brushGroups.each(function(){
         const selectionThis = this;
         const selection = d3.select(selectionThis);
-            const brush = d3.brushY().extent([[0,downShift], [30, 550]])
+            const brush = d3.brushY().extent([[0,downShift], [30, 600]])
                       //Start of the brush
                       .on('start', function() {
                         if (activeBrush && selection !== activeBrushNode) {
@@ -133,6 +133,8 @@ d3.csv("data/Country_Region.csv").then(data => {
         .attr("d", path)
         .attr("class","pcLine")
         .style("stroke",d => regOrdScale(d.region));
+        //.on("mouseover", highlight)
+        //.on("mouseleave", doNotHighlight );
     /*
     .style("fill", "none")
     .style("stroke", )
@@ -171,12 +173,14 @@ d3.csv("data/Country_Region.csv").then(data => {
         .join('tr');
     //console.log(rowSelect)
     let cellSelect = rowSelect.selectAll("td")
-    .data(d => [d.name,d.N,Math.round(+d.Agr*1000)/1000,Math.round(+d.Csn*1000)/1000,Math.round(+d.Est*1000)/1000,Math.round(+d.Ext*1000)/1000,Math.round(+d.Int*1000)/1000])
+    .data(d => [d.name,d.region,d.N,Math.round(+d.Agr*1000)/1000,Math.round(+d.Csn*1000)/1000,Math.round(+d.Est*1000)/1000,Math.round(+d.Ext*1000)/1000,Math.round(+d.Int*1000)/1000])
     .join("td");
     cellSelect.text(d => d);
     }
+    //big5.sort(hAscend('name'));
     drawTable(big5);
 
+   
     // Add sorting
     let hAscend = function(colName){
         return (a,b) => {
@@ -291,6 +295,33 @@ d3.csv("data/Country_Region.csv").then(data => {
             }
         }
     });
+    
+    /*
+    // Enable Region Highlighting
+    let highlight = function(d){
+
+        selected_region = d.region
+    
+        // first every group turns grey
+        d3.selectAll(".line")
+          .transition().duration(200)
+          .style("stroke", "lightgrey")
+          .style("opacity", "0.2")
+        // Second the hovered specie takes its color
+        d3.selectAll("." + selected_region)
+          .transition().duration(200)
+          .style("stroke", regOrdScale(selected_region))
+          .style("opacity", "1")
+      }
+    
+      // Unhighlight
+      let doNotHighlight = function(d){
+        d3.selectAll(".line")
+          .transition().duration(200).delay(500)
+          .style("stroke", d => regOrdScale(d.region) )
+          .style("opacity", "1")
+      }
+      */
 
 
 })

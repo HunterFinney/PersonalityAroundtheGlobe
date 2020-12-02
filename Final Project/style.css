@@ -240,13 +240,13 @@ path.brushed{
 }
 
 #pcDiv{
-    width: 55%;
+    width: 50%;
     float: left;
 }
 
 #tableDiv {
     overflow-y: scroll;
-    margin-left: 600px;
+    margin-left: 700px;
 }
   
 .sortable {
