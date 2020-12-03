@@ -261,8 +261,12 @@ path.brushed{
 }
 
 #tableDiv {
-    overflow: scroll;
-    margin-left: 750px;
+    overflow: scroll;    
+    position: absolute;
+    top: 600;
+    right: 50;
+    width: 50%;
+    height: 300px;
 }
   
 .sortable {

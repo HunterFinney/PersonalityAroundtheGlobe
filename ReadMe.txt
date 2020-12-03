@@ -1,8 +1,8 @@
 This is the final project for CS 5630/6630. This project is authored by: Jordan Pyper; u0363195; u0363195@utah.edu, Hunter Finney; u1319765; u1319765@utah.edu, and Jackson Leach; u1110821; jackson.leach@utah.edu. All of this code was done without the use of any prebuilt libraries other than what was provided and taught in class. Below are links to external websites that host our project.
 
-Results and Video: 
-Visualization: 
-YouTube:
+Results and Video(Check the bottom of the page): http://hunterfinney.com/projects.html
+Visualization: http://hunterfinney.com/PersonalityAroundtheGlobe/index.html
+YouTube: https://www.youtube.com/watch?v=a8O8_4tfI70
 
 Instructions to use our visualization:
 This website is optimized for 1920p by 1080p monitors at full screen resolution. While the visualization would still work, there may be overlapping views or unreasonable layouts in differing formats.
